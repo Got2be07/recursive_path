@@ -1,3 +1,5 @@
+<script src="jquery.js"></script>
+
 <?php
 
 print '<form name="displayRecursiveFolder" method="GET" ation="'.$_SERVER['PHP_SELF'].'" >';
@@ -24,6 +26,7 @@ if(isset($_REQUEST['from'])) $from = strtotime($_REQUEST['from']);
 //echo is_dir('D:\Ma musique\Nouvo\Clubteam.pl\Nouveau\News autres que Musibox\House - Deep House');exit;
 
 $TBPM = get_tab_bpm();
+$i=1;
 
 if(!empty($folder_path)) {
 	print '<table>';
@@ -32,6 +35,8 @@ if(!empty($folder_path)) {
 }
 
 function print_folder_content_recursive($folder_path, $from, $TBPM) {
+
+	global $i;
 
 	if(!is_dir($folder_path)) {
 		print 'Répertoire incorrect';
@@ -57,15 +62,17 @@ function print_folder_content_recursive($folder_path, $from, $TBPM) {
 			print '<td>';
 			print $data;
 			print '</td>';
-			print '<td>';
-			print $TBPM[$data];
+			print '<td style="white-space: nowrap;">';
+			print '<input type="text" id="bpm_'.$i.'" size="5" value="'.$TBPM[$data].'" />';
 			print ' ';
-			print '<a href="#"><img src="save.jpg" /></a>';
+			print '<a href="#" id="btn_save" name="'.$i.'" >save</a>';
+			//print '<a href="#"><img src="save.jpg" /></a>';
 			print '</td>';
 			print '<td>';
 			print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path='.urlencode($folder_path).'&subForm=Afficher">'.$folder_path.'</a>';
 			print '</td>';
 			print '</tr>';
+			$i++;
 		}
 	}
 
@@ -90,3 +97,15 @@ function get_tab_bpm() {
 	
 	return $tab;
 }
+
+?>
+
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		$("#bpm_1").val('laaaa');
+	});
+	
+</script>
+
+<?php
