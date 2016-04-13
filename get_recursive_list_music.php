@@ -29,7 +29,7 @@ $TBPM = get_tab_bpm();
 $i=1;
 
 if(!empty($folder_path)) {
-	print '<table>';
+	print '<table  style="white-space: nowrap;">';
 	@print_folder_content_recursive($folder_path, $from, $TBPM);
 	print '</table>';
 }
@@ -61,11 +61,12 @@ function print_folder_content_recursive($folder_path, $from, $TBPM) {
 			print '<tr>';
 			print '<td>';
 			print $data;
+			print '<input type="hidden" value="'.$data.'" id="title_'.$i.'" />';
 			print '</td>';
-			print '<td style="white-space: nowrap;">';
+			print '<td>';
 			print '<input type="text" id="bpm_'.$i.'" size="5" value="'.$TBPM[$data].'" />';
 			print ' ';
-			print '<a href="#" id="btn_save" name="'.$i.'" >save</a>';
+			print '<a href="#" class="btn_save" name="'.$i.'" >save</a>';
 			//print '<a href="#"><img src="save.jpg" /></a>';
 			print '</td>';
 			print '<td>';
@@ -103,7 +104,21 @@ function get_tab_bpm() {
 <script type="text/javascript">
 	
 	$(document).ready(function() {
-		$("#bpm_1").val('laaaa');
+		console.log($("#btn_savee"));
+		$(".btn_save").click(function() {
+			
+		    $.ajax({
+
+		       url : 'interface.php',
+
+		       type : 'GET',
+
+		       data : 'title=' + $("#title_" + this.name).val() + '&bpm=' + $("#bpm_" + this.name).val()
+
+		    });
+
+	    });
+
 	});
 	
 </script>
