@@ -30,6 +30,17 @@ $i=1;
 
 if(!empty($folder_path)) {
 	print '<table  style="white-space: nowrap;">';
+	print '<tr>';
+	print '<th>';
+	print '</th>';
+	print '<th>';
+	print '<img src="fleche_asc.jpg" />';
+	print 'TRI';
+	print '<img src="fleche_desc.jpg" />';
+	print '</th>';
+	print '<th>';
+	print '</th>';
+	print '</tr>';
 	@print_folder_content_recursive($folder_path, $from, $TBPM);
 	print '</table>';
 }
