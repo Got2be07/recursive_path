@@ -26,6 +26,7 @@ if(isset($_REQUEST['from'])) $from = strtotime($_REQUEST['from']);
 //echo is_dir('D:\Ma musique\Nouvo\Clubteam.pl\Nouveau\News autres que Musibox\House - Deep House');exit;
 
 $TBPM = @get_tab_bpm();
+$TDisplayData = array();
 $i=1;
 
 if(!empty($folder_path)) {
@@ -42,12 +43,13 @@ if(!empty($folder_path)) {
 	print '</th>';
 	print '</tr>';
 	@print_folder_content_recursive($folder_path, $from, $TBPM);
+	affichage($TDisplayData);
 	print '</table>';
 }
 
 function print_folder_content_recursive($folder_path, $from, $TBPM) {
 
-	global $i;
+	global $i, $TDisplayData;
 
 	if(!is_dir($folder_path)) {
 		print 'Répertoire incorrect';
@@ -69,21 +71,8 @@ function print_folder_content_recursive($folder_path, $from, $TBPM) {
 
 			if(isset($_REQUEST['search']) && strpos($data, $_REQUEST['search']) === false) continue;
 			if(isset($from) && (filemtime($folder_path."\\".$data) < $from)) continue;
-			print '<tr>';
-			print '<td>';
-			print $data;
-			print '<input type="hidden" value="'.$data.'" id="title_'.$i.'" />';
-			print '</td>';
-			print '<td>';
-			print '<input type="text" id="bpm_'.$i.'" size="5" value="'.$TBPM[$data].'" />';
-			print ' ';
-			print '<button class="btn_save" name="'.$i.'" >save</a>';
-			//print '<a href="#"><img src="save.jpg" /></a>';
-			print '</td>';
-			print '<td>';
-			print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path='.urlencode($folder_path).'&subForm=Afficher">'.$folder_path.'</a>';
-			print '</td>';
-			print '</tr>';
+
+			$TDisplayData[$data] = array('bpm'=>$TBPM[$data], 'folder'=>$folder_path, 'iterateur'=>$i);
 			$i++;
 		}
 	}
@@ -108,6 +97,28 @@ function get_tab_bpm() {
 	}
 	
 	return $tab;
+}
+
+function affichage($TData) {
+
+	foreach($TData as $data=>$infos) {
+		print '<tr>';
+		print '<td>';
+		print $data;
+		print '<input type="hidden" value="'.$data.'" id="title_'.$infos['iterateur'].'" />';
+		print '</td>';
+		print '<td>';
+		print '<input type="text" id="bpm_'.$infos['iterateur'].'" size="5" value="'.$infos['bpm'].'" />';
+		print ' ';
+		print '<button class="btn_save" name="'.$infos['iterateur'].'" >save</a>';
+		//print '<a href="#"><img src="save.jpg" /></a>';
+		print '</td>';
+		print '<td>';
+		print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path='.urlencode($infos['folder']).'&subForm=Afficher">'.$infos['folder'].'</a>';
+		print '</td>';
+		print '</tr>';
+	}
+
 }
 
 ?>
