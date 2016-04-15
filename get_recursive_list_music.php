@@ -25,7 +25,7 @@ if(isset($_REQUEST['from'])) $from = strtotime($_REQUEST['from']);
 
 //echo is_dir('D:\Ma musique\Nouvo\Clubteam.pl\Nouveau\News autres que Musibox\House - Deep House');exit;
 
-$TBPM = get_tab_bpm();
+$TBPM = @get_tab_bpm();
 $i=1;
 
 if(!empty($folder_path)) {
@@ -66,7 +66,7 @@ function print_folder_content_recursive($folder_path, $from, $TBPM) {
 			print '<td>';
 			print '<input type="text" id="bpm_'.$i.'" size="5" value="'.$TBPM[$data].'" />';
 			print ' ';
-			print '<a href="#" class="btn_save" name="'.$i.'" >save</a>';
+			print '<button class="btn_save" name="'.$i.'" >save</a>';
 			//print '<a href="#"><img src="save.jpg" /></a>';
 			print '</td>';
 			print '<td>';
