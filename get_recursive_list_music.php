@@ -43,6 +43,7 @@ if(!empty($folder_path)) {
 	print '</th>';
 	print '</tr>';
 	@print_folder_content_recursive($folder_path, $from, $TBPM);
+	if(isset($_REQUEST['tri'])) tri_tableau($TDisplayData, $_REQUEST['tri']);
 	affichage($TDisplayData);
 	print '</table>';
 }
@@ -119,6 +120,26 @@ function affichage($TData) {
 		print '</tr>';
 	}
 
+}
+
+function tri_tableau(&$TDisplayData, $ordre='asc') {
+
+	uasort($TDisplayData, 'cmp_'.$ordre);
+
+}
+
+function cmp_asc($a, $b) {
+	if ($a['bpm'] == $b['bpm']) {
+        return 0;
+    }
+    return ($a['bpm'] < $b['bpm']) ? -1 : 1;
+}
+
+function cmp_desc($a, $b) {
+	if ($a['bpm'] == $b['bpm']) {
+        return 0;
+    }
+    return ($a['bpm'] > $b['bpm']) ? -1 : 1;
 }
 
 ?>
