@@ -1,6 +1,6 @@
 <?php
 
-$title = $_REQUEST['title'];
+$title = utf8_decode($_REQUEST['title']);
 $bpm = $_REQUEST['bpm'];
 
 $db = new PDO("mysql:host=localhost;dbname=bpm_title;charset=UTF8", 'root', '');

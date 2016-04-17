@@ -156,7 +156,7 @@ function cmp_desc($a, $b) {
 
 		       type : 'GET',
 
-		       data : 'title=' + $("#title_" + this.name).val() + '&bpm=' + $("#bpm_" + this.name).val()
+		       data : 'title=' + encodeURIComponent($("#title_" + this.name).val()) + '&bpm=' + $("#bpm_" + this.name).val()
 
 		    });
 
