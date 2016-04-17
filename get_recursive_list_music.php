@@ -35,9 +35,9 @@ if(!empty($folder_path)) {
 	print '<th>';
 	print '</th>';
 	print '<th>';
-	print '<img src="fleche_asc.jpg" />';
+	@print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&tri=asc"><img src="fleche_asc.jpg" /></a>';
 	print 'TRI';
-	print '<img src="fleche_desc.jpg" />';
+	@print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&tri=desc"><img src="fleche_desc.jpg" />';
 	print '</th>';
 	print '<th>';
 	print '</th>';
