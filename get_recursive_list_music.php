@@ -1,4 +1,4 @@
-<script src="jquery.js"></script>
+<script src="script/jquery.js"></script>
 
 <?php
 
@@ -35,9 +35,8 @@ if(!empty($folder_path)) {
 	print '<th>';
 	print '</th>';
 	print '<th>';
-	@print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&tri=asc"><img src="fleche_asc.jpg" /></a>';
-	print 'TRI';
-	@print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&tri=desc"><img src="fleche_desc.jpg" />';
+	@print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&tri=asc"><img src="img/fleche_asc.jpg" /></a>';
+	@print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&tri=desc"><img src="img/fleche_desc.jpg" />';
 	print '</th>';
 	print '<th>';
 	print '</th>';
@@ -152,7 +151,7 @@ function cmp_desc($a, $b) {
 			
 		    $.ajax({
 
-		       url : 'interface.php',
+		       url : 'script/interface.php',
 
 		       type : 'GET',
 
