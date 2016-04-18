@@ -101,8 +101,10 @@ function get_tab_bpm() {
 
 function affichage($TData) {
 
+	$bc = false;
+
 	foreach($TData as $data=>$infos) {
-		print '<tr>';
+		print '<tr '.(empty($bc) ? 'bgcolor="#DCDCDC"' : '').'>';
 		print '<td>';
 		print $data;
 		print '<input type="hidden" value="'.$data.'" id="title_'.$infos['iterateur'].'" />';
@@ -117,6 +119,7 @@ function affichage($TData) {
 		print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path='.urlencode($infos['folder']).'&subForm=Afficher">'.$infos['folder'].'</a>';
 		print '</td>';
 		print '</tr>';
+		$bc = !$bc;
 	}
 
 }
