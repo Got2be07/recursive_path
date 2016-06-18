@@ -3,7 +3,7 @@
 <style type="text/css">
 #data{
     width: auto;
-    height:430px;
+    height:500px;
     overflow-x:scroll;
 }
 </style>
