@@ -1,5 +1,13 @@
 <script src="script/jquery.js"></script>
 
+<style type="text/css">
+#data{
+    width: auto;
+    height:430px;
+    overflow-x:scroll;
+}
+</style>
+
 <?php
 
 print '<form name="displayRecursiveFolder" method="GET" ation="'.$_SERVER['PHP_SELF'].'" >';
@@ -10,7 +18,6 @@ print '<input type="text" name="from" value="'.(isset($_REQUEST['from']) ? $_REQ
 print '<input type="submit" name="subForm" value="Afficher"/>';
 print '</form>';
 print 'Répertoires fréquents :<br />';
-print '<br />';
 print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es&subForm=Afficher">Soirées</a>';
 print ' / ';
 print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es%5CRNB&subForm=Afficher">RNB</a>';
@@ -29,6 +36,11 @@ print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?fol
 print '<br />';
 print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CAchats+internet%5CT%E9l%E9chargement+l%E9gal+Musiboxlive&from=&subForm=Afficher">MBL</a>';
 print '<br />';
+print '<br />';
+print 'Tri BPM : ';
+@print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&tri=asc"><img src="img/fleche_asc.jpg" /></a>';
+@print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&tri=desc"><img src="img/fleche_desc.jpg" /></a>';
+print '<br />';
 
 if(isset($_REQUEST['folder_path'])) $folder_path = $_REQUEST['folder_path'];
 if(isset($_REQUEST['from'])) $from = strtotime($_REQUEST['from']);
@@ -39,14 +51,15 @@ $TBPM = @get_tab_bpm();
 $TDisplayData = array();
 $i=1;
 
+print '<div id="data">';
+
 if(!empty($folder_path)) {
 	print '<table  style="white-space: nowrap;">';
 	print '<tr>';
 	print '<th>';
 	print '</th>';
 	print '<th>';
-	@print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&tri=asc"><img src="img/fleche_asc.jpg" /></a>';
-	@print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&tri=desc"><img src="img/fleche_desc.jpg" />';
+
 	print '</th>';
 	print '<th>';
 	print '</th>';
@@ -56,6 +69,8 @@ if(!empty($folder_path)) {
 	affichage($TDisplayData);
 	print '</table>';
 }
+
+print '</div>';
 
 function print_folder_content_recursive($folder_path, $from, $TBPM) {
 
