@@ -4,20 +4,30 @@
 
 print '<form name="displayRecursiveFolder" method="GET" ation="'.$_SERVER['PHP_SELF'].'" >';
 print 'Folder path : ';
-print '<input type="text" name="folder_path" value="'.$_REQUEST['folder_path'].'" />';
+@print '<input type="text" name="folder_path" value="'.$_REQUEST['folder_path'].'" />';
 print '	Ajouté depuis : ';
 print '<input type="text" name="from" value="'.(isset($_REQUEST['from']) ? $_REQUEST['from'] : '').'" />';
 print '<input type="submit" name="subForm" value="Afficher"/>';
 print '</form>';
 print 'Répertoires fréquents :<br />';
-print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A\Ma+musique\Nouvo\Clubteam.pl\Nouveau\News+autres+que+Musibox\House+-+Deep+-+Future+House&subForm=Afficher">House - Deep</a>';
+print '<br />';
+print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es&subForm=Afficher">Soirées</a>';
 print ' / ';
 print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es%5CRNB&subForm=Afficher">RNB</a>';
 print ' / ';
-print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es&subForm=Afficher">Soirées</a>';
+print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es%5CZouk+Reggae+Ragga&from=&subForm=Afficher">Zouk - Reggae - Ragga</a>';
 print ' / ';
-print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A\Ma+musique\Nouvo\Clubteam.pl\Nouveau\News+autres+que+Musibox&from=&subForm=Afficher">NAQM</a>';-
+print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es%5CBombes+Disco+-+Funk&from=&subForm=Afficher">Funk</a>';
 print '<br />';
+print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A\Ma+musique\Nouvo\Clubteam.pl\Nouveau\News+autres+que+Musibox&from=&subForm=Afficher">NAQM</a>';
+print ' / ';
+print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A\Ma+musique\Nouvo\Clubteam.pl\Nouveau\News+autres+que+Musibox\House+-+Deep+-+Future+House&subForm=Afficher">House - Deep</a>';
+print ' / ';
+print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CNouvo%5CClubteam.pl%5CNouveau%5CNews+autres+que+Musibox%5CMoombahton&from=&subForm=Afficher">Moombah!</a>';
+print ' / ';
+print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CNouvo%5CClubteam.pl%5CNouveau%5CNews+autres+que+Musibox%5CTrap&from=&subForm=Afficher">Trap - Chill trap</a>';
+print '<br />';
+print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CAchats+internet%5CT%E9l%E9chargement+l%E9gal+Musiboxlive&from=&subForm=Afficher">MBL</a>';
 print '<br />';
 
 if(isset($_REQUEST['folder_path'])) $folder_path = $_REQUEST['folder_path'];
