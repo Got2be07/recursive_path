@@ -101,7 +101,7 @@ function print_folder_content_recursive($folder_path, $from, $TBPM) {
 			if(isset($_REQUEST['search']) && strpos($data, $_REQUEST['search']) === false) continue;
 			if(isset($from) && (filemtime($folder_path."\\".$data) < $from)) continue;
 
-			$TDisplayData[$data] = array('bpm'=>$TBPM[$data], 'folder'=>$folder_path, 'iterateur'=>$i);
+			$TDisplayData[$data] = array('bpm'=>$TBPM[$data]['bpm'], 'color'=>$TBPM[$data]['color'], 'folder'=>$folder_path, 'iterateur'=>$i);
 			$i++;
 		}
 	}
@@ -121,8 +121,10 @@ function get_tab_bpm() {
 	$db = new PDO("mysql:host=localhost;dbname=bpm_title;charset=UTF8", 'root', '');
 	$resql = $db->query('SELECT * FROM bpm_title');
 	$TRes = $resql->fetchAll();
+
 	foreach ($TRes as $key => $value) {
-		$tab[$value['title']] = $value['bpm'];
+		$tab[$value['title']]['bpm'] = $value['bpm'];
+		$tab[$value['title']]['color'] = $value['color'];
 	}
 	
 	return $tab;
@@ -133,13 +135,18 @@ function affichage($TData) {
 	$bc = false;
 
 	foreach($TData as $data=>$infos) {
-		print '<tr '.(empty($bc) ? 'bgcolor="#DCDCDC"' : '').'>';
+		
+		print '<tr ';
+		if(!empty($infos['color'])) print 'bgcolor="'.$infos['color'].'"';
+		elseif(empty($bc)) print 'bgcolor="#DCDCDC"';
+		print '>';
 		print '<td>';
 		print $data;
 		print '<input type="hidden" value="'.$data.'" id="title_'.$infos['iterateur'].'" />';
 		print '</td>';
 		print '<td>';
 		print '<input type="text" id="bpm_'.$infos['iterateur'].'" size="5" value="'.$infos['bpm'].'" />';
+		print ' <input type="text" id="color_'.$infos['iterateur'].'" size="5" value="'.$infos['color'].'" />';
 		print ' ';
 		print '<button class="btn_save" name="'.$infos['iterateur'].'" >save</a>';
 		//print '<a href="#"><img src="save.jpg" /></a>';
@@ -187,7 +194,9 @@ function cmp_desc($a, $b) {
 
 		       type : 'GET',
 
-		       data : 'title=' + encodeURIComponent($("#title_" + this.name).val()) + '&bpm=' + $("#bpm_" + this.name).val()
+		       data : 'title=' + encodeURIComponent($("#title_" + this.name).val())
+		       		   + '&bpm=' + $("#bpm_" + this.name).val()
+		       		   + '&color=' + encodeURIComponent($("#color_" + this.name).val())
 
 		    });
 
