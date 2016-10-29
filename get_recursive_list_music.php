@@ -137,9 +137,14 @@ function affichage($TData) {
 	foreach($TData as $data=>$infos) {
 		
 		print '<tr ';
-		if(!empty($infos['color'])) print 'bgcolor="'.$infos['color'].'"';
-		elseif(empty($bc)) print 'bgcolor="#DCDCDC"';
+		if(empty($bc)) print 'bgcolor="#DCDCDC"';
 		print '>';
+		print '<td style="weight:50px;" ';
+		if(!empty($infos['color'])) print 'bgcolor="'.$infos['color'].'"';
+		elseif(empty($bc)) print 'bgcolor="#FFFFFF"';
+		print '>';
+		print '&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
+		print '</td>';
 		print '<td>';
 		print $data;
 		print '<input type="hidden" value="'.$data.'" id="title_'.$infos['iterateur'].'" />';
