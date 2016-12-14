@@ -27,6 +27,8 @@ print ' / ';
 print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es%5CBombes+Disco+-+Funk&from=&subForm=Afficher">Funk</a>';
 print ' / ';
 print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es%5CPop&from=&subForm=Afficher">Pop</a>';
+print ' / ';
+print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es%5CGipsy&from=&subForm=Afficher">Espagnol</a>';
 print '<br />';
 print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A\Ma+musique\Nouvo\Clubteam.pl\Nouveau\News+autres+que+Musibox&from=&subForm=Afficher">NAQM</a>';
 print ' / ';
