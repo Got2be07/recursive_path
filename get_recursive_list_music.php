@@ -3,12 +3,16 @@
 <style type="text/css">
 #data{
     width: auto;
-    height:500px;
+    height:595px;
     overflow-x:scroll;
 }
 </style>
 
 <?php
+
+error_reporting(0);
+
+$page = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 
 print '<form name="displayRecursiveFolder" method="GET" ation="'.$_SERVER['PHP_SELF'].'" >';
 print 'Folder path : ';
@@ -18,37 +22,37 @@ print '<input type="text" name="from" value="'.(isset($_REQUEST['from']) ? $_REQ
 print '<input type="submit" name="subForm" value="Afficher"/>';
 print '</form>';
 print 'Répertoires fréquents :<br />';
-print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es&subForm=Afficher">Soirées</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es">Soirées</a>';
 print ' : ';
-print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es%5CSoleil&subForm=Afficher">Soleil</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CSoleil&subForm=Afficher">Soleil</a>';
 print ' / ';
-print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es%5CRNB&subForm=Afficher">RNB</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CRNB&subForm=Afficher">RNB</a>';
 print ' / ';
-print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es%5CZouk+Reggae+Ragga&from=&subForm=Afficher">Zouk - Reggae - Ragga</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CZouk+Reggae+Ragga&from=&subForm=Afficher">Zouk - Reggae - Ragga</a>';
 print ' / ';
-print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es%5CBombes+Disco+-+Funk&from=&subForm=Afficher">Funk</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CBombes+Disco+-+Funk&from=&subForm=Afficher">Funk</a>';
 print ' / ';
-print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es%5CPop&from=&subForm=Afficher">Pop</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CPop&from=&subForm=Afficher">Pop</a>';
 print ' / ';
-print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es%5CGipsy&from=&subForm=Afficher">Espagnol</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CGipsy&from=&subForm=Afficher">Espagnol</a>';
 print ' / ';
-print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es%5C80&from=&subForm=Afficher">80</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5C80&from=&subForm=Afficher">80</a>';
 print ' / ';
-print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es%5C90&from=&subForm=Afficher">90</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5C90&from=&subForm=Afficher">90</a>';
 print ' / ';
-print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CSoir%E9es%5C2000&from=&subForm=Afficher">2000</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5C2000&from=&subForm=Afficher">2000</a>';
 print '<br />';
-print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A\Ma+musique\Nouvo\Clubteam.pl\Nouveau\News+autres+que+Musibox&from=&subForm=Afficher">NAQM</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox&from=&subForm=Afficher">NAQM</a>';
 print ' : ';
-print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A\Ma+musique\Nouvo\Clubteam.pl\Nouveau\News+autres+que+Musibox\House+-+Deep+-+Future+House&subForm=Afficher">House - Deep</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox\House+-+Deep+-+Future+House&subForm=Afficher">House - Deep</a>';
 print ' / ';
-print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CNouvo%5CClubteam.pl%5CNouveau%5CNews+autres+que+Musibox%5CHouse+-+Deep+-+Future+House%5CChill&subForm=Afficher">Chill</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox%5CHouse+-+Deep+-+Future+House%5CChill&subForm=Afficher">Chill</a>';
 print ' / ';
-print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CNouvo%5CClubteam.pl%5CNouveau%5CNews+autres+que+Musibox%5CMoombahton&from=&subForm=Afficher">Moombah!</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox%5CMoombahton&from=&subForm=Afficher">Moombah!</a>';
 print ' / ';
-print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CNouvo%5CClubteam.pl%5CNouveau%5CNews+autres+que+Musibox%5CTrap&from=&subForm=Afficher">Trap - Chill trap</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox%5CTrap&from=&subForm=Afficher">Trap - Chill trap</a>';
 print '<br />';
-print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path=D%3A%5CMa+musique%5CAchats+internet%5CT%E9l%E9chargement+l%E9gal+Musiboxlive&from=&subForm=Afficher">MBL</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Achats internet\MBL&subForm=Afficher">MBL</a>';
 print '<br />';
 print '<br />';
 print 'Tri BPM : ';
@@ -142,6 +146,8 @@ function get_tab_bpm() {
 
 function affichage($TData) {
 
+	global $page;
+
 	$bc = false;
 
 	foreach($TData as $data=>$infos) {
@@ -167,7 +173,7 @@ function affichage($TData) {
 		//print '<a href="#"><img src="save.jpg" /></a>';
 		print '</td>';
 		print '<td>';
-		print '<a href="http://127.0.0.1/recursive_path/get_recursive_list_music.php?folder_path='.urlencode($infos['folder']).'&subForm=Afficher">'.$infos['folder'].'</a>';
+		print '<a href="http://'.$page.'?folder_path='.urlencode($infos['folder']).'&subForm=Afficher">'.$infos['folder'].'</a>';
 		print '</td>';
 		print '</tr>';
 		$bc = !$bc;
