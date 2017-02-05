@@ -1,9 +1,10 @@
 <script src="script/jquery.js"></script>
+<script src="script/notify.js"></script>
 
 <style type="text/css">
 #data{
     width: auto;
-    height:595px;
+    height:700px;
     overflow-x:scroll;
 }
 </style>
@@ -22,42 +23,42 @@ print '<input type="text" name="from" value="'.(isset($_REQUEST['from']) ? $_REQ
 print '<input type="submit" name="subForm" value="Afficher"/>';
 print '</form>';
 print 'Répertoires fréquents :<br />';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es">Soirées</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es&title_page=Soirées">Soirées</a>';
 print ' : ';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CSoleil&subForm=Afficher">Soleil</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CSoleil&subForm=Afficher&title_page=Soleil">Soleil</a>';
 print ' / ';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CRNB&subForm=Afficher">RNB</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CRNB&subForm=Afficher&title_page=RNB">RNB</a>';
 print ' / ';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CZouk+Reggae+Ragga&from=&subForm=Afficher">Zouk - Reggae - Ragga</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CZouk+Reggae+Ragga&from=&subForm=Afficher&title_page=Zouk - Reggae - Ragga">Zouk - Reggae - Ragga</a>';
 print ' / ';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CBombes+Disco+-+Funk&from=&subForm=Afficher">Funk</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CBombes+Disco+-+Funk&from=&subForm=Afficher&title_page=Funk">Funk</a>';
 print ' / ';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CPop&from=&subForm=Afficher">Pop</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CPop&from=&subForm=Afficher&title_page=Pop">Pop</a>';
 print ' / ';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CGipsy&from=&subForm=Afficher">Espagnol</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CGipsy&from=&subForm=Afficher&title_page=Espagnol">Espagnol</a>';
 print ' / ';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5C80&from=&subForm=Afficher">80</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5C80&from=&subForm=Afficher&title_page=80">80</a>';
 print ' / ';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5C90&from=&subForm=Afficher">90</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5C90&from=&subForm=Afficher&title_page=90">90</a>';
 print ' / ';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5C2000&from=&subForm=Afficher">2000</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5C2000&from=&subForm=Afficher&title_page=2000">2000</a>';
 print '<br />';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox&from=&subForm=Afficher">NAQM</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox&from=&subForm=Afficher&title_page=NAQM">NAQM</a>';
 print ' : ';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox\House+-+Deep+-+Future+House&subForm=Afficher">House - Deep</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox\House+-+Deep+-+Future+House&subForm=Afficher&title_page=House">House - Deep</a>';
 print ' / ';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox%5CHouse+-+Deep+-+Future+House%5CChill&subForm=Afficher">Chill</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox%5CHouse+-+Deep+-+Future+House%5CChill&subForm=Afficher&title_page=Chill">Chill</a>';
 print ' / ';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox%5CMoombahton&from=&subForm=Afficher">Moombah!</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox%5CMoombahton&from=&subForm=Afficher&title_page=Moombahton">Moombah!</a>';
 print ' / ';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox%5CTrap&from=&subForm=Afficher">Trap - Chill trap</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox%5CTrap&from=&subForm=Afficher&title_page=Trap - Chill Trap">Trap - Chill trap</a>';
 print '<br />';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Achats internet\MBL&subForm=Afficher">MBL</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Achats internet\MBL&subForm=Afficher&title_page=Musiboxlive">MBL</a>';
 print '<br />';
 print '<br />';
 print 'Tri BPM : ';
-@print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&tri=asc"><img src="img/fleche_asc.jpg" /></a>';
-@print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&tri=desc"><img src="img/fleche_desc.jpg" /></a>';
+@print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&title_page='.$_REQUEST['title_page'].'&tri=asc"><img src="img/fleche_asc.jpg" /></a>';
+@print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&title_page='.$_REQUEST['title_page'].'&tri=desc"><img src="img/fleche_desc.jpg" /></a>';
 print '<br />';
 
 if(isset($_REQUEST['folder_path'])) $folder_path = $_REQUEST['folder_path'];
@@ -139,6 +140,8 @@ function get_tab_bpm() {
 	foreach ($TRes as $key => $value) {
 		$tab[$value['title']]['bpm'] = $value['bpm'];
 		$tab[$value['title']]['color'] = $value['color'];
+		$tab[utf8_decode($value['title'])]['bpm'] = $value['bpm'];
+		$tab[utf8_decode($value['title'])]['color'] = $value['color'];
 	}
 	
 	return $tab;
@@ -205,6 +208,8 @@ function cmp_desc($a, $b) {
 
 <script type="text/javascript">
 	
+	$.notify("<?php print $_REQUEST['title_page']; ?>", 'success');
+
 	$(document).ready(function() {
 		console.log($("#btn_savee"));
 		$(".btn_save").click(function() {
