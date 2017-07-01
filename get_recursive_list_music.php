@@ -47,6 +47,8 @@ print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouvea
 print ' : ';
 print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox\House+-+Deep+-+Future+House&subForm=Afficher&title_page=House">House - Deep</a>';
 print ' / ';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox\Minimal&subForm=Afficher&title_page=House">Minimal</a>';
+print ' / ';
 print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox%5CHouse+-+Deep+-+Future+House%5CChill&subForm=Afficher&title_page=Chill">Chill</a>';
 print ' / ';
 print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox%5CMoombahton&from=&subForm=Afficher&title_page=Moombahton">Moombah!</a>';
