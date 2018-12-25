@@ -29,7 +29,7 @@ print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CSoleil&subFo
 print ' / ';
 print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CRNB&subForm=Afficher&title_page=RNB">RNB</a>';
 print ' / ';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CZouk+Reggae+Ragga&from=&subForm=Afficher&title_page=Zouk - Reggae - Ragga">Zouk - Reggae - Ragga</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CZouk+Reggae+Ragga&from=&subForm=Afficher&title_page=Zouk - Reggae - Ragga">Zouk-Reggae-Ragga-Dancehall-Afrobeat</a>';
 print ' / ';
 print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CBombes+Disco+-+Funk&from=&subForm=Afficher&title_page=Funk">Funk</a>';
 print ' / ';
@@ -45,15 +45,15 @@ print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5C2000&from=&s
 print '<br />';
 print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox&from=&subForm=Afficher&title_page=NAQM">NAQM</a>';
 print ' : ';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox\House+-+Deep+-+Future+House&subForm=Afficher&title_page=House">House - Deep</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CHouse+-+Deep+-+Future+House&subForm=Afficher&title_page=House">House-Deep-Future</a>';
 print ' / ';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox\Minimal&subForm=Afficher&title_page=House">Minimal</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CMinimal&subForm=Afficher&title_page=House">Minimal</a>';
 print ' / ';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox%5CHouse+-+Deep+-+Future+House%5CChill&subForm=Afficher&title_page=Chill">Chill</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CHouse+-+Deep+-+Future+House%5CChill&subForm=Afficher&title_page=Chill">Chill</a>';
 print ' / ';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox%5CMoombahton&from=&subForm=Afficher&title_page=Moombahton">Moombah!</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CMoombahton&from=&subForm=Afficher&title_page=Moombahton">Moombah!</a>';
 print ' / ';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Nouvo\Clubteam.pl\Nouveau\News%20autres%20que%20Musibox%5CTrap&from=&subForm=Afficher&title_page=Trap - Chill Trap">Trap - Chill trap</a>';
+print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CTrap&from=&subForm=Afficher&title_page=Trap - Chill Trap">Trap-Chill Trap-Jersey Club</a>';
 print '<br />';
 print '<a href="http://'.$page.'?folder_path=D:\Musique\Achats internet\MBL&subForm=Afficher&title_page=Musiboxlive">MBL</a>';
 print '<br />';
@@ -86,7 +86,7 @@ if(!empty($folder_path)) {
 	print '</th>';
 	print '</tr>';
 	@print_folder_content_recursive($folder_path, $from, $TBPM);
-	if(isset($_REQUEST['tri'])) tri_tableau($TDisplayData, $_REQUEST['tri']);
+	tri_tableau($TDisplayData, !empty($_REQUEST['tri']) ? $_REQUEST['tri'] : 'desc');
 	affichage($TDisplayData);
 	print '</table>';
 }
