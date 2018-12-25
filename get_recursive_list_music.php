@@ -58,9 +58,11 @@ print '<br />';
 print '<a href="http://'.$page.'?folder_path=D:\Musique\Achats internet\MBL&subForm=Afficher&title_page=Musiboxlive">MBL</a>';
 print '<br />';
 print '<br />';
-print 'Tri BPM : ';
+print '<input placeholder="Rechercher titre" type="text" id="track_name"/>';
+/*print 'Tri BPM : ';
 @print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&title_page='.$_REQUEST['title_page'].'&tri=asc"><img src="img/fleche_asc.jpg" /></a>';
-@print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&title_page='.$_REQUEST['title_page'].'&tri=desc"><img src="img/fleche_desc.jpg" /></a>';
+@print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&title_page='.$_REQUEST['title_page'].'&tri=desc"><img src="img/fleche_desc.jpg" /></a>';*/
+print '<br />';
 print '<br />';
 
 if(isset($_REQUEST['folder_path'])) $folder_path = $_REQUEST['folder_path'];
@@ -75,8 +77,8 @@ $i=1;
 print '<div id="data">';
 
 if(!empty($folder_path)) {
-	print '<table  style="white-space: nowrap;">';
-	print '<tr>';
+	print '<table id="all_tracks" style="white-space: nowrap;">';
+	/*print '<tr>';
 	print '<th>';
 	print '</th>';
 	print '<th>';
@@ -84,7 +86,7 @@ if(!empty($folder_path)) {
 	print '</th>';
 	print '<th>';
 	print '</th>';
-	print '</tr>';
+	print '</tr>';*/
 	@print_folder_content_recursive($folder_path, $from, $TBPM);
 	tri_tableau($TDisplayData, !empty($_REQUEST['tri']) ? $_REQUEST['tri'] : 'desc');
 	affichage($TDisplayData);
@@ -160,13 +162,13 @@ function affichage($TData) {
 		print '<tr ';
 		if(empty($bc)) print 'bgcolor="#DCDCDC"';
 		print '>';
-		print '<td style="weight:50px;" ';
+		print '<td class="color_track_visu" style="weight:50px;" ';
 		if(!empty($infos['color'])) print 'bgcolor="'.$infos['color'].'"';
 		elseif(empty($bc)) print 'bgcolor="#FFFFFF"';
 		print '>';
 		print '&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
 		print '</td>';
-		print '<td>';
+		print '<td class="title_track">';
 		print $data;
 		print '<input type="hidden" value="'.$data.'" id="title_'.$infos['iterateur'].'" />';
 		print '</td>';
@@ -229,6 +231,24 @@ function cmp_desc($a, $b) {
 		    });
 
 	    });
+
+		$("#track_name").keyup(function() {
+			var key_search = $(this).val();
+			var it = true;
+			$("#all_tracks > tbody > tr").each(function(i, item) {
+				var title = $(item).find('td.title_track').text();
+				
+				if(title.toLowerCase().indexOf(key_search.toLowerCase()) == -1) {
+					$(item).hide();
+				} else {
+					$(item).show();
+					if(it) $(item).attr('bgcolor','#DCDCDC');
+					else $(item).attr('bgcolor','');
+					it=!it;
+				}
+
+			});
+		});
 
 	});
 	
