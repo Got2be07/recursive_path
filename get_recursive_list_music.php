@@ -243,8 +243,22 @@ function cmp_desc($a, $b) {
 					$(item).hide();
 				} else {
 					$(item).show();
-					if(it) $(item).attr('bgcolor','#DCDCDC');
-					else $(item).attr('bgcolor','');
+					if(it) {
+						$(item).find('td').each(function(k, col) {
+							if($(col).attr('class') != 'color_track_visu') {
+								$(col).attr('bgcolor','#DCDCDC');
+							}
+						});
+					}
+					else {
+						$(item).attr('bgcolor','');
+						$(item).find('td').each(function(k, col) {
+							if($(col).attr('class') != 'color_track_visu') {
+								$(col).attr('bgcolor','');	
+							}
+						});
+					}
+
 					it=!it;
 				}
 
