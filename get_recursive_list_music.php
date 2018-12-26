@@ -78,6 +78,7 @@ print '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input placeholder="Rechercher 
 print '&nbsp;&nbsp;<a href="#" id="empty_field" style="text-decoration:none;">X</a>';
 print '&nbsp;&nbsp;<a href="#" class="filter_color" value="#14c904" style="background-color:#14c904;text-decoration:none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>';
 print '&nbsp;&nbsp;<a href="#" class="filter_color" value="#f2ff00" style="background-color:#f2ff00;text-decoration:none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>';
+print '&nbsp;&nbsp;<a href="#" class="filter_color" value="#FFA500" style="background-color:#FFA500;text-decoration:none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>';
 
 /*print 'Tri BPM : ';
 @print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&title_page='.$_REQUEST['title_page'].'&tri=asc"><img src="img/fleche_asc.jpg" /></a>';
