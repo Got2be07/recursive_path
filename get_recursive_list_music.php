@@ -58,7 +58,7 @@ print '<br />';
 print '<a href="http://'.$page.'?folder_path=D:\Musique\Achats internet\MBL&subForm=Afficher&title_page=Musiboxlive">MBL</a>';
 print '<br />';
 print '<br />';
-print '<input placeholder="Rechercher titre" type="text" id="track_name"/>';
+print '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input placeholder="Rechercher titre / BPM" type="text" id="track_name"/>';
 /*print 'Tri BPM : ';
 @print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&title_page='.$_REQUEST['title_page'].'&tri=asc"><img src="img/fleche_asc.jpg" /></a>';
 @print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&title_page='.$_REQUEST['title_page'].'&tri=desc"><img src="img/fleche_desc.jpg" /></a>';*/
@@ -162,7 +162,7 @@ function affichage($TData) {
 		print '<tr ';
 		if(empty($bc)) print 'bgcolor="#DCDCDC"';
 		print '>';
-		print '<td class="color_track_visu" style="weight:50px;" ';
+		print '<td class="color_track_visu" style="weight:50px;border:1px solid;" ';
 		if(!empty($infos['color'])) print 'bgcolor="'.$infos['color'].'"';
 		elseif(empty($bc)) print 'bgcolor="#FFFFFF"';
 		print '>';
@@ -172,9 +172,9 @@ function affichage($TData) {
 		print $data;
 		print '<input type="hidden" value="'.$data.'" id="title_'.$infos['iterateur'].'" />';
 		print '</td>';
-		print '<td>';
-		print '<input type="text" id="bpm_'.$infos['iterateur'].'" size="5" value="'.$infos['bpm'].'" />';
-		print ' <input type="text" id="color_'.$infos['iterateur'].'" size="5" value="'.$infos['color'].'" />';
+		print '<td class="bpm_and_color">';
+		print '<input placeholder="BPM" type="text" id="bpm_'.$infos['iterateur'].'" size="5" value="'.$infos['bpm'].'" />';
+		print ' <input placeholder="Color" type="text" id="color_'.$infos['iterateur'].'" size="5" value="'.$infos['color'].'" />';
 		print ' ';
 		print '<button class="btn_save" name="'.$infos['iterateur'].'" >save</a>';
 		//print '<a href="#"><img src="save.jpg" /></a>';
@@ -237,8 +237,9 @@ function cmp_desc($a, $b) {
 			var it = true;
 			$("#all_tracks > tbody > tr").each(function(i, item) {
 				var title = $(item).find('td.title_track').text();
+				var bpm = $(item).find('td.bpm_and_color').find('input[id^="bpm_"]').val();
 				
-				if(title.toLowerCase().indexOf(key_search.toLowerCase()) == -1) {
+				if(title.toLowerCase().indexOf(key_search.toLowerCase()) == -1 && bpm.indexOf(key_search) == -1) {
 					$(item).hide();
 				} else {
 					$(item).show();
