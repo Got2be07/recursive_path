@@ -4,8 +4,24 @@
 <style type="text/css">
 #data{
     width: auto;
-    height:700px;
+    height:677px;
     overflow-x:scroll;
+}
+td.color_track_visu{
+	width:30px;
+	border:1px solid;
+}
+td.title_track{
+	width:1000px;
+
+.lien_sexy {
+	padding:6px 0 6px 0;
+	font:bold 13px Arial;
+	background:#478bf9;
+	color:#fff;
+	border-radius:2px;
+	width:100px;
+	border:none;
 }
 </style>
 
@@ -23,7 +39,7 @@ print '<input type="text" name="from" value="'.(isset($_REQUEST['from']) ? $_REQ
 print '<input type="submit" name="subForm" value="Afficher"/>';
 print '</form>';
 print 'Répertoires fréquents :<br />';
-print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es&title_page=Soirées">Soirées</a>';
+print '<a class="bouton_sexy" href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es&title_page=Soirées">Soirées</a>';
 print ' : ';
 print '<a href="http://'.$page.'?folder_path=D:\Musique\Soir%E9es%5CSoleil&subForm=Afficher&title_page=Soleil">Soleil</a>';
 print ' / ';
@@ -58,7 +74,11 @@ print '<br />';
 print '<a href="http://'.$page.'?folder_path=D:\Musique\Achats internet\MBL&subForm=Afficher&title_page=Musiboxlive">MBL</a>';
 print '<br />';
 print '<br />';
-print '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input placeholder="Rechercher titre / BPM" type="text" id="track_name"/>';
+print '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input placeholder="Rechercher titre / BPM" type="text" id="track_name"/>&nbsp;';
+print '&nbsp;&nbsp;<a href="#" id="empty_field" style="text-decoration:none;">X</a>';
+print '&nbsp;&nbsp;<a href="#" class="filter_color" value="#14c904" style="background-color:#14c904;text-decoration:none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>';
+print '&nbsp;&nbsp;<a href="#" class="filter_color" value="#f2ff00" style="background-color:#f2ff00;text-decoration:none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>';
+
 /*print 'Tri BPM : ';
 @print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&title_page='.$_REQUEST['title_page'].'&tri=asc"><img src="img/fleche_asc.jpg" /></a>';
 @print '<a href="?folder_path='.$_REQUEST['folder_path'].'&from='.$_REQUEST['from'].'&title_page='.$_REQUEST['title_page'].'&tri=desc"><img src="img/fleche_desc.jpg" /></a>';*/
@@ -162,13 +182,13 @@ function affichage($TData) {
 		print '<tr ';
 		if(empty($bc)) print 'bgcolor="#DCDCDC"';
 		print '>';
-		print '<td class="color_track_visu" style="weight:50px;border:1px solid;" ';
+		print '<td class="color_track_visu" ';
 		if(!empty($infos['color'])) print 'bgcolor="'.$infos['color'].'"';
 		elseif(empty($bc)) print 'bgcolor="#FFFFFF"';
 		print '>';
 		print '&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
 		print '</td>';
-		print '<td class="title_track">';
+		print '<td class="title_track" style="weight:1000px;">';
 		print $data;
 		print '<input type="hidden" value="'.$data.'" id="title_'.$infos['iterateur'].'" />';
 		print '</td>';
@@ -238,8 +258,11 @@ function cmp_desc($a, $b) {
 			$("#all_tracks > tbody > tr").each(function(i, item) {
 				var title = $(item).find('td.title_track').text();
 				var bpm = $(item).find('td.bpm_and_color').find('input[id^="bpm_"]').val();
+				var color = $(item).find('td.bpm_and_color').find('input[id^="color_"]').val();
 				
-				if(title.toLowerCase().indexOf(key_search.toLowerCase()) == -1 && bpm.indexOf(key_search) == -1) {
+				if(title.toLowerCase().indexOf(key_search.toLowerCase()) == -1 
+					&& bpm.indexOf(key_search) == -1
+					&& color.indexOf(key_search) == -1) {
 					$(item).hide();
 				} else {
 					$(item).show();
@@ -263,6 +286,14 @@ function cmp_desc($a, $b) {
 				}
 
 			});
+		});
+
+		$("[class=filter_color]").click(function() {
+			$("#track_name").val($(this).attr('value')).trigger("keyup");
+		});
+
+		$("#empty_field").click(function() {
+			$("#track_name").val('').trigger('keyup');
 		});
 
 	});
