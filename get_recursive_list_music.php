@@ -18,6 +18,8 @@ td.title_track{
 
 <?php
 
+$TDateAddSong=array();
+
 error_reporting(0);
 
 $page = $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
@@ -94,7 +96,7 @@ print '</div>';
 
 function print_folder_content_recursive($folder_path, $from, $TBPM) {
 
-	global $i, $TDisplayData;
+	global $i, $TDisplayData, $TDateAddSong;
 
 	if(!is_dir($folder_path)) {
 		print 'Répertoire incorrect';
@@ -113,7 +115,9 @@ function print_folder_content_recursive($folder_path, $from, $TBPM) {
 			$TFolder[] = $folder_path."\\".$data;
 		}
 		else {
-
+			
+			$TDateAddSong[$data] = filemtime($folder_path."\\".$data);
+//echo $data.'<br>';
 			if(isset($_REQUEST['search']) && strpos($data, $_REQUEST['search']) === false) continue;
 			if(isset($from) && (filemtime($folder_path."\\".$data) < $from)) continue;
 
@@ -203,6 +207,36 @@ function cmp_desc($a, $b) {
         return 0;
     }
     return ($a['bpm'] > $b['bpm']) ? -1 : 1;
+}
+
+//update_date_add_track($TDateAddSong);
+
+function update_date_add_track(&$TDateAddSong) {
+
+	if(!empty($TDateAddSong)) {
+		$db = new PDO("mysql:host=localhost;dbname=bpm_title;", 'root', '');
+		/*echo '<pre>';
+		print_r($TDateAddSong);*/
+
+		foreach($TDateAddSong as $k=>$v) {
+			$sql = 'SELECT rowid FROM bpm_title WHERE title = "'.$k.'"';
+			//echo $sql.'<br>';
+			$resql = $db->query($sql);
+			if(!empty($resql)) {
+				$res = $resql->fetchAll();
+				if(!empty($res)) $id = (int)$res[0]['rowid'];
+				else $id = 0;
+			} else $id=0;
+			
+			if(!empty($id)) { // Ligne déjà existante
+				$sql_update = 'UPDATE bpm_title SET date_add = "'.date('Y-m-d H:i:s', $v).'" WHERE rowid = '.$id;
+				$resql = $db->query($sql_update);
+			}
+
+		}
+		echo 'FINIIII !!!';
+	}
+
 }
 
 ?>
